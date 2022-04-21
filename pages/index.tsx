@@ -2,6 +2,9 @@ import type { NextPage } from 'next'
 import { Player, PlayerRef } from '@remotion/player';
 import { useEffect, useRef, useState } from 'react';
 import { interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
+import { Story10 } from '../components/remotion1';
+import { Story11 } from '../components/remotion2';
+
 
 type Props = {
   title: string;
@@ -12,7 +15,7 @@ type Props = {
 const CarSlideshow = ({ title, bgColor, color }: Props) => {
   const frame = useCurrentFrame();
   const { width, height, durationInFrames } = useVideoConfig();
-  const left = interpolate(frame, [0, durationInFrames], [width, width * -1]);
+  const lefty = interpolate(frame, [0, durationInFrames], [width, width * -1]);
 
   return (
     <div
@@ -31,7 +34,7 @@ const CarSlideshow = ({ title, bgColor, color }: Props) => {
           fontWeight: 'bold',
           position: 'absolute',
           top: height / 2 - 100,
-          left,
+          left: lefty,
           color: color,
           whiteSpace: 'nowrap',
         }}
@@ -41,9 +44,20 @@ const CarSlideshow = ({ title, bgColor, color }: Props) => {
     </div>
   );
 };
+
+
 const Home: NextPage = () => {
   const [title, setTitle] = useState('Hello World');
+
+  const [title1, setTitle1] = useState('Nature');
+
+  const [url, setImage] = useState("https://images.unsplash.com/photo-1542382689-217623cad37c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2552&q=80");
+
+
   const [color, setColor] = useState('#ffffff');
+  const [color1, setColor1] = useState('#e9b230');
+  const [color2, setColor2] = useState('#ffffff');
+
   const [bgColor, setBgColor] = useState('#000000');
   const [loop, setLoop] = useState(false);
   const [doubleClickToFullscreen, setDoubleClickToFullscreen] = useState(true);
@@ -75,31 +89,119 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div style={{ margin: '2rem', display: 'flex', justifyContent: 'center', columnGap: '16px' }}>
+<div>
+
+
+
+    
+<div style={{ margin: '2rem', display: 'flex', justifyContent: 'center', columnGap: '16px' }}>
+      
+      
+          
+
+
+
       <div>
         <Player
           ref={ref}
-          compositionWidth={500}
-          compositionHeight={432}
+          compositionWidth={270}
+          compositionHeight={480}
           fps={30}
           durationInFrames={500}
-          component={CarSlideshow}
+          component={Story11}
           controls
           doubleClickToFullscreen={doubleClickToFullscreen}
           loop={loop}
           showVolumeControls={true}
           clickToPlay={clickToPlay}
           inputProps={{
-            title: String(title),
-            bgColor: String(bgColor),
-            color: String(color),
+            // bgColor: String(bgColor),
+            color: String(color1),
+            color2: String(color2),
+              url:String(url),
+            someText: String(title1)
           }}
           spaceKeyToPlayOrPause={spaceKeyToPlayOrPause}
         />
       </div>
 
       <div>
-        <div style={{ paddingTop: '0.5rem' }}>
+        <div style={{ paddingTop: '15.5rem' }}>
+            Enter Text{' '}
+            <input
+              value={title1}
+              onChange={(e) => {
+                setTitle1(e.target.value);
+              }}
+            />
+          </div>
+        <div style={{ paddingTop: '1rem' }}>
+          <div>
+            Select Text Color{' '}
+            <input
+              type="color"
+              value={color2}
+              onChange={(e) => setColor2(e.target.value)}
+            />
+          </div>
+
+          <div style={{ paddingTop: '1rem' }}>
+            Select Ring Color{' '}
+            <input
+              type="color"
+              value={color1}
+              onChange={(e) => setColor1(e.target.value)}
+            />
+          </div>
+
+
+          <div style={{ paddingTop: '1rem' }}>
+            Select Image{' '}
+            <input
+              type="text"
+              value={url}
+              onChange={(e) => setImage(e.target.value)}
+              placeholder="https://image-url.com"
+            />
+          </div>
+
+
+          <div style={{ paddingTop: '1rem' }}>
+          <button>
+            render
+          </button>
+            
+          </div>
+        
+        </div>
+
+      </div>
+
+
+                <div>
+        <Player
+          ref={ref}
+          compositionWidth={270}
+          compositionHeight={480}
+          fps={30}
+          durationInFrames={500}
+          component={Story10}
+          controls
+          doubleClickToFullscreen={doubleClickToFullscreen}
+          loop={loop}
+          showVolumeControls={true}
+          clickToPlay={clickToPlay}
+          inputProps={{
+            // bgColor: String(bgColor),
+            color: String(color),
+            someText: String(title)
+          }}
+          spaceKeyToPlayOrPause={spaceKeyToPlayOrPause}
+        />
+      </div>
+
+      <div>
+        <div style={{ paddingTop: '15.5rem' }}>
             Enter Text{' '}
             <input
               value={title}
@@ -117,17 +219,155 @@ const Home: NextPage = () => {
               onChange={(e) => setColor(e.target.value)}
             />
           </div>
-          <div>
-            Select Background Color{' '}
-            <input
-              type="color"
-              value={bgColor}
-              onChange={(e) => setBgColor(e.target.value)}
-            />
+          <div style={{ paddingTop: '0.5rem' }}>
+          <button>
+            render
+          </button>
+            
           </div>
+        
         </div>
 
-        <br />
+      </div>
+
+
+
+    </div>
+
+
+    
+    <div style={{ margin: '2rem', display: 'flex', justifyContent: 'center', columnGap: '16px' }}>
+      
+      
+          
+
+
+
+      <div>
+        <Player
+          ref={ref}
+          compositionWidth={270}
+          compositionHeight={480}
+          fps={30}
+          durationInFrames={500}
+          component={Story10}
+          controls
+          doubleClickToFullscreen={doubleClickToFullscreen}
+          loop={loop}
+          showVolumeControls={true}
+          clickToPlay={clickToPlay}
+          inputProps={{
+            // bgColor: String(bgColor),
+            color: String(color),
+            someText: String(title)
+          }}
+          spaceKeyToPlayOrPause={spaceKeyToPlayOrPause}
+        />
+      </div>
+
+      <div>
+        <div style={{ paddingTop: '15.5rem' }}>
+            Enter Text{' '}
+            <input
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+          </div>
+        <div style={{ paddingTop: '0.5rem' }}>
+          <div>
+            Select Text Color{' '}
+            <input
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </div>
+          <div style={{ paddingTop: '0.5rem' }}>
+          <button>
+            render
+          </button>
+            
+          </div>
+        
+        </div>
+
+      </div>
+
+
+                <div>
+        <Player
+          ref={ref}
+          compositionWidth={270}
+          compositionHeight={480}
+          fps={30}
+          durationInFrames={500}
+          component={Story10}
+          controls
+          doubleClickToFullscreen={doubleClickToFullscreen}
+          loop={loop}
+          showVolumeControls={true}
+          clickToPlay={clickToPlay}
+          inputProps={{
+            // bgColor: String(bgColor),
+            color: String(color),
+            someText: String(title)
+          }}
+          spaceKeyToPlayOrPause={spaceKeyToPlayOrPause}
+        />
+      </div>
+
+      <div>
+        <div style={{ paddingTop: '15.5rem' }}>
+            Enter Text{' '}
+            <input
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
+            />
+          </div>
+        <div style={{ paddingTop: '0.5rem' }}>
+          <div>
+            Select Text Color{' '}
+            <input
+              type="color"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            />
+          </div>
+          <div style={{ paddingTop: '0.5rem' }}>
+          <button>
+            render
+          </button>
+            
+          </div>
+        
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+</div>
+
+    
+  );
+}
+
+export default Home
+
+
+
+
+
+        {/* <br />
         <button type="button" onClick={(e) => ref.current?.play(e)}>
           Play
         </button>
@@ -213,10 +453,4 @@ const Home: NextPage = () => {
           }}
         >
           pause and seek
-        </button>
-      </div>
-    </div>
-  );
-}
-
-export default Home
+        </button> */}
