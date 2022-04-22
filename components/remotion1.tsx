@@ -39,7 +39,7 @@ export const Story10: React.FC <{someText:string, color: string}> = ({someText, 
   }}>
   
 
-<Img src="https://images.unsplash.com/photo-1565087467572-f2889d5b1e75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2028&q=80" width='1240' height="720" z-index="-2" style={{transform:`scale(${ScalerBild})`}}/>
+<Img src="https://images.unsplash.com/photo-1565087467572-f2889d5b1e75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2028&q=80" width='720' height="1280" z-index="-2" style={{transform:`scale(${ScalerBild})`}}/>
   <SvgHexagon Skalier={Mover1} color={color}/>
 
   <SvgHexagon Skalier={Mover2} color={color}/>
@@ -56,7 +56,6 @@ export const Story10: React.FC <{someText:string, color: string}> = ({someText, 
   const SvgHexagon: React.FC <{Skalier:number, color: string}> = ({Skalier, color}) => {
 
 
-    const config = useVideoConfig();
     const frame = useCurrentFrame();
     const Farb = interpolate(frame, [90, 120],[0,1], 
       {extrapolateLeft: 'clamp', 
@@ -147,7 +146,6 @@ export const Story10: React.FC <{someText:string, color: string}> = ({someText, 
 const TextNormal: React.FC <{someText: string, color:string}> = ({someText,color}) => {
 
 
-  const config = useVideoConfig();
   const frame = useCurrentFrame();
 
   const Opac = interpolate(frame, [80,100],[0,1],  

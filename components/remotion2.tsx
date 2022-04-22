@@ -33,7 +33,6 @@ justifyContent: 'center', alignItems: 'center',
  
  const SvgCircle: React.FC <{color:string}> = ({color}) => {
 
-    const config = useVideoConfig();
     const frame = useCurrentFrame();
     const Skalier = interpolate(frame, [20,70],[2,1.8],
         {extrapolateLeft:'clamp', extrapolateRight:'clamp'})
@@ -51,10 +50,10 @@ justifyContent: 'center', alignItems: 'center',
     </svg>
     
     <svg style={{position:'absolute' ,transform: 'scale(2)', opacity:'0.2'}} width="1000px" height='600px' >
-      <circle fill="transparent" strokeWidth="5" stroke={color} cx="500" cy="300" r="50"/>
+      <circle style={{}} fill="transparent" strokeWidth="5" stroke={color} cx="500" cy="300" r="50"/>
     </svg>
     
-    <svg style={{position:'absolute' ,transform: 'scale(2)', opacity:'0.2'}} width="1000px" height='600px' >
+    <svg style={{position:'absolute' ,transform: 'scale(3)', opacity:'0.2'}} width="1000px" height='600px' >
       <circle fill="transparent" strokeWidth="5" stroke={color} cx="500" cy="300" r="50"/>
     </svg>
     
@@ -79,7 +78,6 @@ justifyContent: 'center', alignItems: 'center',
 const TextNormal: React.FC <{someText: string, color2:string}> = ({someText,color2}) => {
 
 
-  const config = useVideoConfig();
   const frame = useCurrentFrame();
 
   
@@ -93,7 +91,7 @@ justifyContent: 'center', alignItems: 'center', padding :'100px, 120px, 100px,12
 
 
 
-<Textros style={{color:color2, opacity:0.8}}>
+<Textros style={{color:color2, opacity:1}}>
 {someText}
 </Textros>
 

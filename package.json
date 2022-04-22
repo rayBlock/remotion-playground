@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@remotion/player": "^3.0.0-rc.15",
+    "@remotion/bundler": "3.0.0-rc.15",
+    "@remotion/renderer": "3.0.0-rc.15",
+    "@remotion/cli": "3.0.0-rc.15",
+    "@remotion/lambda": "3.0.0-rc.15",
+    "@remotion/player": "3.0.0-rc.15",
+    "remotion": "3.0.0-rc.15",
     "next": "12.1.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "remotion": "^3.0.0-rc.15",
     "sharp": "^0.30.4",
     "styled-components": "^5.3.5"
   },
